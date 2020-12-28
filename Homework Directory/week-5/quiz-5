@@ -1,0 +1,71 @@
+
+Quiz-week-5
+Due: Thursday OCT-1st 11:59 PM 
+
+
+Directory diry has 3 files inside listed here: $HOME/dirx/diry 
+                 -filex
+            -filey
+            -filez
+
+Write a command to make a directory called new-dir in your $HOME directory.
+            $mkdir $HOME/new-dir
+Write a command to copy all files from diry into the new directory called new-dir you just created in your home directory. Assume that you are in your home directory.
+$cp -R $HOME/dirx/diry new-dir
+
+Write a command to rename the diry to dir-yy
+            $mv $HOME/dirx/diry $HOME/dirx/diryy
+
+Give the command to create a hard link from a file called filex.
+$cal > filex
+$ln filex hl_filex
+
+Give the command to create a symbolic link from filex to a new file called sym-filex
+$ln -s filex sym-filex
+
+Change the permission of dir-yy so that the owner of the directory has rwx, r-x for the group, and --- for others.
+$chmod 750 $HOME/dirx/diryy
+
+Set the UID bit on the below script file with the following content.
+$ vi sayit
+--------------
+#!/bin/bash
+echo  `date`
+echo  how are you
+--------------
+Change the permissions of the script file sayit  to 755.
+            $chmod 755 sayit
+SEt the UID bit on the file script file called sayit.
+$chmod u+s sayit
+Show how you set your PATH so that your path will have the following directories.
+/usr/bin:/usr/sbin:$HOME/bin
+$PATH=/usr/bin:/usr/sbin:$HOME/bin
+
+Set the PATH in your $HOME/.bashrc file so that it will always be active when you first log onto the system.
+$vim $HOME/.bashrc
+export PATH="$HOME/bin:$PATH"
+$source $HOME/.bashrc
+
+
+Make a directory in your home directory called test-data
+$mkdir $HOME/test-data
+
+Copy all files from the /etc directory that begins with the letter p followed by the letter r followed any other characters to your $HOME/test-data
+$cp /etc/pr* $HOME/test-data
+
+What is the size of the data in your test-data directory. Use the du command with the proper options all the sizes of the files and also the total space used by the directory.
+            $du -ch $HOME/test-data
+         
+ 2.  Given a  directory called diry and a file called filex, please answer the following questions.    
+        
+Write a test command to test if diry is a directory
+$test -d diry
+Write a test command to test if filex is a file.
+$test -f filex
+Write a test command to test if filex is executible . If so, include a logical AND ( &&) clause that echo Yes - filex is a executable
+$test -x filex && echo Yes - filex is a executable
+Write a test command to test if filex has a size greater than zero.
+    $test -n filex 
+
+A file system     inode     is allocated every time you create a file.
+

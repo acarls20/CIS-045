@@ -1,0 +1,111 @@
+18 September 2020
+Lab 2
+Navigating the file system
+$cd /; ls -F;
+
+$ cd /etc; ls -F
+
+$ ls -F | more
+
+$ cd /var/log; ls -a
+
+$ ls -al
+$ ls -al
+
+ls -al |more
+
+$ ls  /usr/sbin
+$ ls  /usr/sbin
+
+$ ls -F  /usr/sbin
+
+System files
+$ touch .mydatafile
+$ ls -l
+No
+$ ls -a
+Yes
+$ ls -al
+Me
+0
+$ pwd;  cal > .mydatafile
+$ cat .mydatafile
+$ cd $HOME; pwd; ls -a
+
+$ cd -
+
+Relative/Absolute
+$ cd /home/cs45aa06
+$ pwd
+/home/cs45aa06
+$ cd /var/log
+$ pwd
+/var/log
+$ cd . .
+$ pwd
+/var
+$ cd ~mr-tester
+$ pwd
+/home/mr-tester
+$ cd -
+$ pwd
+/var
+$ mkdir $HOME/globbers
+$ ls -d $HOME/globbers
+/home/cs45aa06/globbers
+$ touch filex filey filez file55 file60 file70 file100 file200  foo  fox
+f
+$ ls  f??
+foo  fox
+$ ls f*x
+filex  fox
+$ ls f*[2]*
+file200
+$ ls f*2*
+file200
+$ ls f*[0-9][0-9]
+file100  file200  file55  file60  file70
+$ ls f*[0-9][0-9]*
+file100  file200  file55  file60  file70
+$ ls f[!i]*
+foo  fox
+$ touch file_one file_two
+$ ls -a
+
+$ cat > tester_file
+
+$ cat tester_file
+
+$ nano tester_file_2
+
+$ vi tester-v
+
+$ mkdir /home/cs45aa06/dirx
+cd $HOME/dirx
+dirx
+$ pwd
+/home/cs45aa06/dirx
+$ mkdir ../diry
+$ mkdir ../../../cs45aa06-tester
+$ mkdir /tmp/cs45aa06-tester2
+$ touch /tmp/cs45aa06-tester/data-file
+$ mkdir /tmp/dirz/dirz
+mkdir: cannot create directory /tmp/dirz/dirz: File exists
+$ mkdir -p /tmp/dirR/dirS
+It works because the directory youre trying to create doesnt already exist
+$ rm /tmp/cs45aa06-tester
+$ rm /tmp/cs45aa06-tester2
+rm: cannot remove /tmp/cs45aa06-tester2: Is a directory
+$ rm -r /tmp/cs45aa06-tester2
+$ ls /tmp/cs45aa06-tester2
+ls: cannot access /tmp/cs45aa06-tester2: No such file or directory
+$ touch Afile Bfile Cfile
+$ ls
+Afile  Bfile  Cfile
+$ rm Afile
+$ ls
+Bfile  Cfile
+$ rm Bfile
+$ ls
+Cfile
+

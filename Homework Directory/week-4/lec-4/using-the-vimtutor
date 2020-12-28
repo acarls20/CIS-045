@@ -1,0 +1,23 @@
+24 September 2020
+Using the vimtutor
+On your system, search by keyword for all vim related entries in the man pages.
+$ man -k vim
+gvim (1)             - Vi IMproved, a programmers text editor
+gvimdiff (1)         - edit two, three or four versions of a file with Vim and show differences
+gvimtutor (1)        - the Vim tutor
+rvim (1)             - Vi IMproved, a programmers text editor
+vim (1)              - Vi IMproved, a programmers text editor
+vimdiff (1)          - edit two, three or four versions of a file with Vim and show differences
+vimrc (5)            - Vi IMproved, a programmers text editor
+vimrc_event.conf (5) - configuration file for libreport.
+vimtutor (1)         - the Vim tutor
+vimx (1)             - Vi IMproved, a programmers text editor
+Look at the man page for vim(1),  the vimrc(5), and the vimtutor(1).
+What is the purpose of the vimrc?
+Contains Vims core global settings
+The vimtutor is a great way to become more familiar with vim. Vim is the new improved version of the 'vi' editor which is guaranteed to be on every system. You need to become more familiar with the 'vi/vim' editor.
+Start the tutorial by just typing the name 'vimtutor' on the command line.
+Then Follow the instructions step by step until you get to about 15 mins. Next time, continue from where you left off and continue to practice for another 15 mins. Repeat this everyday and you will be good at using the vi/vim editor.
+$ vimtutor
+
+

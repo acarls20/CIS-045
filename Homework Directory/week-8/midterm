@@ -1,0 +1,47 @@
+CIS45 - Midterm Pratical Exam
+
+Make a directory under /tmp/midterm that has your initials and ends with -practical.
+For example. My would be hc. $ mkdir /tmp/midterm/hc-practical
+At the end of the lab, you will copy your information to this directory.
+Put all answers in this file and copy it to the /tmp/midterm/<your initials>-practical directory.
+
+
+1. A regular text file exist somewhere on your system. Find the name of the file that has name and Social Security Numbers that look like this:
+   john 343-45-1048
+   pete 543-45-1048
+
+   a. Show the command to do this.
+      $ grep -rl "john 343-45-1048\|pete 543-45-1048" / 2> /dev/null
+
+   b. What is the name of the file? __________
+      /etc/profile.d/.ssn_file
+
+2. Write a command to swap the phone number with the social security number so that output looks like this:
+    343-45-1048  john
+    543-45-1048  peter
+
+
+   b.  Write an expression to remove the dashes '-' from the SSN numbers above.
+       $ sed 's/-//g' /etc/profile.d/.ssn_file
+
+
+3. A file exist on the system where the inode number matches the first
+   five numbers of one of the SSN in the file. Find the file with that inode number.
+   $grep '(^|[^-0-9])[0-9]{3}-[0-9]{2}-[0-9]{4}([^-0-9]|$)' /etc/profile.d/.ssn_file -exec find -inode {}\;
+
+
+4. In your midterm/<yourname> directory, create a directory called lab-output
+   that has read , write and execute for everyone plus the sticky bit set.
+   $ chmod 1777 lab-output
+
+6. Copy all files from the /etc directory that begins with the letter 'p'
+   into your lab-output directory.
+   $ cp /etc/p* /tmp/midterm/ajc-practical/lab-output
+
+7. Put all files in the lab-output directory into a tar ball called etcfiles.tar
+   and then compress it using the gzip or bzip2 utility.
+   $ tar czf etcfiles.tar lab-output
+
+
+8. Copy the compress tar file called to the  /home/hcampbell/students-lab
+

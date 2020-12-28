@@ -1,0 +1,41 @@
+15 October 2020
+Quiz 6
+file=datafile ;echo $file
+No Question
+Salary
+65000
+50000
+1000000
+$ cut -d: -f 1,3 $file
+Salary
+65000
+50000
+1000000
+$ cut -c '1-5'  $file
+$ cat $file  | tr 'a-z'  'A-Z'
+$ cat $file | tr '[a-z]' 'X'
+$ sed -E 's/:[0-9][0-9]:/:*****:/g' $file
+$ wc -l $file
+$ wc -m $file
+1h: Copies line 1 space to hold space
+2d: Deletes line 2
+3H: Appends line 3 to hold space
+4g: Copies hold space to line 4
+$ sed '1h;2d;3g;4H' datafile
+$ sed -e '1 w df1' -e '2,3 w df2' -e '4 w df3' datafile
+$ sed -n '/^[ ^Space ctrl+v Tab]/p'  xfile
+$ sed -e "s/\s/g" inputFile
+$ sed   '1,3d'   $file
+$ sed   '2,$d'  $file
+filea and fileb
+$ diff filea fileb
+$ uniq filea; uniq fileb
+Ignore differences in case when comparing
+Only print duplicate lines, one for each group
+$ find $HOME -user cs45aa06 -type f -mtime -3 -size +4M -size -5M -exec tar -rvf out.tar {} \;
+$ find $HOME -type f -name "xyz" | xargs rm
+$ egrep -Rl "^.{80, }$"  $HOME
+$ egrep -RnH "^.{80, }$" $HOME
+$ grep -r "homework"  $HOME
+$ find $HOME -inum 12345 -exec mv '{}' /tmp/storage directory \;
+

@@ -1,0 +1,113 @@
+mybackup.sh
+#! /bin/bash
+#
+# This script uses functions from $HOME/Scripts/myfunctions
+#
+. $HOME/Scripts/myfunctions
+
+echo Welcome to version 2.0 of my backup script
+echo This program backs up to the Cloud
+
+echo ......doing cloud stuff
+
+echo -n would you like to back up your local directories 
+    read ans
+        if [ $ans = yes ]
+            then
+                menu
+        else
+        echo Thanks for using my script
+        fi
+myfunctions.sh
+#! /bin/bash
+BACKUP_DIR="$HOME/.secret/.backup"
+chmod 700 $BACKUP_DIR
+
+echo Please enter your name: 
+read name
+
+ menu() {
+cat << END
+        MENU
+----------------------------------------------------
+Backup
+Compress
+Compress and backup
+Quit menu
+----------------------------------------------------
+END
+read_input
+}
+
+backup_func(){
+    echo Please enter the directory you wish to backup: 
+        read user_backup
+            if [ -d user_backup ]
+                then
+                    cp -r user_backup BACKUP_DIR
+            else
+            echo Invalid directory
+            echo Please try again
+            fi
+}
+
+compress_func(){
+    echo Please enter the directory you wish to compress: 
+        read user_backup
+            if [ -d user_backup ]
+                then
+        cd user_backup
+        directory_name=${PWD##*/}
+        tar -zcvf directory_name.tar.gz user_backup
+            else
+            echo Invalid directory
+            echo Please try again
+            fi
+}
+
+compress_and_backup_func(){
+    echo Please enter the directory you wish to compress and backup: 
+        read user_backup
+            if [ -d user_backup ]
+                then
+        cd user_backup
+directory_name=${PWD##*/}
+cd BACKUP_DIR
+        tar -zcvf directory_name.tar.gz user_backup
+            else
+            echo Invalid directory
+            echo Please try again
+            fi
+}
+
+function read_input
+{
+while true
+do
+    echo -n Please select a number to continue: 
+        read choice
+            case $choice in
+                1|1. |backup|Backup)
+                    backup_func
+                    ;;
+                2|2. |Compress|compress)
+                    compress_func
+                    ;;
+                3|3. |Compress and backup)
+                    compress_and_backup_func
+                                ;;
+                4|4. |Quit|quit|Quit menu)
+                    echo Exiting program.
+                    exit 5
+                    ;;
+                *)
+                    echo Sorry not a valid option.
+                    echo Please try again.
+                    ;;
+        esac
+done            
+}
+Backup Script Assignment
+#! /bin/bash
+./mybackup.sh
+

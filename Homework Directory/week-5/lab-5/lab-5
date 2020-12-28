@@ -1,0 +1,18 @@
+8 October 2020
+Lab 5
+
+$sort -n months
+$sort -m months numbers  >monbrs
+$grep ^r /etc/passwd
+$grep -c ^r /etc/passwd
+$grep -v cs45 /etc/passwd
+$grep y$ /etc/passwd
+$grep -i root\|ly\|body /etc/passwd
+$cat -t regtxt
+$grep '\(([0-9]\{3\})\|[0-9]\{3\}\)[ -]\?[0-9]\{3\}[ -]\?[0-9]\{4\}' regtxt
+aaaaaAA
+$sed 's/(^|[^-0-9])[0-9]{3}-[0-9]{2}-[0-9]{4}([^-0-9]|$)/\*\*\*$/g' regtxt2
+$sed 's/100\+/(&)/g' regtxt1
+$grep '\(([0-9]\{3\})\|[0-9]\{3\}\)[ -]\?[0-9]\{3\}[ -]\?[0-9]\{4\}' regtxt2
+$sed 's/\(([0-9]\{3\})\|[0-9]\{3\}\)[ -]\?[0-9]\{3\}[ -]\?[0-9]\{4\}/\5\2\3\1/' regtxt2
+

@@ -1,0 +1,178 @@
+10 September 2020
+Lab 1
+$ ssh
+$ssh cs45aa06@209.129.148.10
+$ id
+uid=1006(cs45aa06) gid=1006(cs45aa06) groups=1006(cs45aa06) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+$ id -r/-u
+$id -r
+Real user id: who you actually are before switching users
+id: cannot print only names or real IDs in default format
+$id -u
+Effective user id: who you currently are
+1006
+$ who
+
+2020-09-05 14:37 (c-73-41-184-155.hsd1.ca.comcast.net)
+$ tty
+/dev/pts/18
+$ w
+
+$ man w
+
+$ info man
+
+$ hostname
+mc-redhat01
+$ hostname --help
+
+-i, --ip-address
+long host name (FQDN)
+$ man -k
+$ man -s3p printf
+man printf just shows the options for printf(1) while man -s3p printf shows the full manual for the specific command
+printf(1)
+
+'curl'
+Curl is a tool to transfer data from or to a server, using one of the supported protocols
+'wget'
+GNU Wget is a free utility for non-interactive download of files from the Web
+$ echo $0
+-bash
+$ echo $SHELL
+/bin/bash
+$ echo $PATH
+/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cs45aa06/.local/bin:/home/cs45aa06/bin
+$ pizza
+bash: pizza: command not found
+$ su  -  mr-tester
+$ pwd
+/home/mr-tester
+$ whoami
+mr-tester
+$ who am i
+cs45aa06 pts/0
+$ whoami shows which user you are currently accessing and $ who am i displays the name of your real user
+$ whoami
+cs45aa06
+$ su mr-tester
+$ pwd
+/home/cs45aa06
+ $ whoami
+mr-tester
+ $ who am i
+cs45aa06 pts/0
+The working directory points to my own user instead of mr-testers
+$ whoami
+cs45aa06
+$ last
+
+$ last mr-tester
+wtmp begins Thu Sep  3 23:10:23 2020
+ $ pinky
+ $ pinky cs45aa06
+
+$ pinky -l cs45aa06
+
+ $ cal
+$ cal 2020
+
+$ cal 1999
+
+cal 10 2025
+
+ $ date
+ $ date
+Fri Sep 11 02:31:08 EDT 2020
+ $ date +%F
+2020-09-11
+ $ date +%m
+09
+ $ date +%m-%d
+09-11
+09-05-2020
+date +%m-%d-%y
+$ pwd
+$ pwd
+/home/cs45aa06
+$ dir
+Using dir on its own returns nothing
+The commands purpose is to list directory contents
+ $ pwd
+$ pwd
+/home/cs45aa06
+ $ cd /tmp
+$ pwd
+/tmp
+$ ls
+
+$ ls -a
+
+$ cd /
+$ ls -F
+bin@  boot/  dev/  etc/  home/  lib@  lib64@  media/  mnt/  opt/  proc/  root/  run/  sbin@  srv/  sys/  tmp/  usr/  var/
+$ cd  /tmp; ls -a; pwd; date
+
+$ cd
+$ cd ~ ; ls -l
+total 0
+$ cd ; ls -al
+
+ $ cd $HOME;  ls -a
+.  ..  .bash_history  .bash_logout  .bash_profile  .bashrc  .cache  .config  .lesshst  .mozilla
+ $ cd /tmp; pwd
+/tmp
+ $ cd -  ; pwd
+/home/cs45aa06
+/home/cs45aa06
+Adding a dash returns you to the directory you were in previously
+ $ cd ~mr-tester  ; pwd
+/home/mr-tester
+$ cd /; ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+ $ cd ~; pwd
+/home/cs45aa06
+ $ cd ..   ; pwd
+/home
+It takes you to the parent directory
+$ pwd; cd ~
+/home
+ $ ls -a .
+.  ..  .bash_history  .bash_logout  .bash_profile  .bashrc  .cache  .config  .lesshst  .mozilla
+Memory
+$ free
+
+ $ free -h
+
+ $ free --help ; man free
+
+$ free -g
+
+$ free -b
+
+ls
+$ type ls
+ls is aliased to `ls --color=auto'
+$ type pwd
+pwd is a shell builtin
+ $ type date
+date is hashed (/usr/bin/date)
+How much space is being used by each file system on this node? 
+ $ df -h
+
+ $ df -hT
+
+How much space is being used by the files and directories on the disk?
+$ du
+
+ $ du -sh  .
+24K     .
+$ du -sh *
+du: cannot access *: No such file or directory
+ $ du -a
+
+$ du -sh   /home
+
+  $ du -shS  /home
+
+

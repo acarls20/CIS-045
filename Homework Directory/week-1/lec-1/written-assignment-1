@@ -1,0 +1,117 @@
+10 September 2020
+Written Assignment 1
+What is the Linux Operating System?
+A family of open source Unix-like operating systems based on the Linux kernel
+
+Name at least 3 major parts of what makes up the Operating System?
+The Linux kernel
+The GNU utilities
+A graphical desktop environment
+Application software
+
+The Kernel is the heart of the Linux Operating System.  How can you tell what version of the kernel you are running?
+First number = major number
+Second number = minor number
+Even minor numbers indicate stable production kernels
+Odd minor numbers indicate (unstable) development kernels
+Third number = patch release
+
+What are the parts of the Kernel and what do they do?
+System memory management
+Software program management
+Hardware management
+Filesystem management
+
+What is a Process?
+A running program
+
+What does running in the foreground and running in the background means?
+Foreground = displaying output on a display
+Background = behind the scenes
+
+What is the name of the first process that the Linux system creates?
+init process
+
+Kernel communicate with devices through Drivers ( True or False )____.
+True
+
+There is no need to rebuild the kernel when you install new devices because Modules allow you to insert and remove Driver code in the Live Kernel. ( True or False)____.
+True
+
+All devices in Linux are identified by the kernel as Files. The types of files are Character, Block and Network.(True or False)____.
+True
+
+Describe what a character device is and give one example.
+Character device files are for devices that can only handle data one character at a time
+Most types of modems and terminals are created as character files
+
+Block devices handles data blocks at a time--example are Disk Drives--(True or false)
+True
+
+Which kind of file type will be used to send packets?
+Network
+
+What is the name of the special device files created by Linux for all devices on the system and makes use of a Major number and a Minor Number?
+Nodes
+
+What is a File System?
+Facilitates the storing and retrieving of data
+
+List at least 3 Linux file system types?
+ext
+Linux Extended filesystem  the original Linux filesystem
+hpfs
+OS/2 high-performance filesystem
+nfs
+Network File System
+
+What is GNU? Who started the concept?
+GNU was launched by Richard Stallman (rms) in 1983, as an operating system which would be put together by people working together for the freedom of all software users to control their computing
+
+Describe the purpose of the SHELL
+It provides a way for users to start programs, manage files on the filesystem, and manage processes running on the Linux system
+
+What piece of software works directly with your Video card and Monitor in the PC when it comes to presenting graphics?
+The X Window software is a low-level program that works directly with the video card and monitor in the PC, and it controls how Linux applications can present fancy windows and graphics on your computer
+
+List at least 2  Desktops for Linux.
+The KDE Desktop
+The GNOME Desktop
+
+What do you call a complete Linux system package?
+Distribution
+
+What is a Live CD and name at least 3 live Distros
+A bootable CD that contains a sample Linux system
+Knoppix
+A German Linux, the first Linux LiveCD developed
+PCLinuxOS
+Full-blown Linux distribution on a LiveCD
+Ubuntu
+A worldwide Linux project, designed for many languages
+
+What is a Console?
+A simple shell CLI on the monitor
+
+When Linux starts, it creates many virtual consoles. ( True or False)_____.
+True
+
+CLI (command line interface) was the only means of accessing Linux before the Graphical User Interfaces were developed(True or False) _____.
+True
+
+How to access the virtual console
+CTRL + ALT + { F1 to F7 } Depending on the virtual console you want to use
+
+What two things must every user have to log onto a Linux system?
+ID
+Password
+
+How do you see what shell you are in?
+The pwd command displays the shell sessions current directory location, which is called the present working directory
+
+Linux is an operating system and has a hierarchical file system that begins with the root directory '/'.  All files and directories are created relative to the '/' directory( True or False)?
+True
+
+How do you switch user  from one user to another?
+su -
+

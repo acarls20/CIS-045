@@ -1,0 +1,178 @@
+24 September 2020
+Lab 3
+$ umask
+0002
+(No Question)
+Go into your ~/homework/week-3/lec-3 directory.
+Verify that you are in your lec-3 directory before you execute the following commands. Record the output of ls -ld dirx.
+$ mkdir dirx
+$ ls -ld dirx
+drwxrwxr-x. 2 cs45aa06 cs45aa06 6 Sep 24 05:19 dirx
+Create an empty file
+$ touch xfile
+$ ls -l xfile
+-rw-rw-r--. 1 cs45aa06 cs45aa06 0 Sep 24 05:19 xfile
+ Who owns xfile?
+cs45aa06
+What is the size of xfile?
+0
+What are the permissions of xfile?
+-rw-rw-r--
+Owner: Read, write
+Group: Read, write
+Others: Read
+What are the owners' permission for xfile?
+Read, write
+What are the permissions for the group owner of xfile?
+Read, write
+If you are not the owner and not in the group, what permissions do you get?
+Read
+Change your umask to 033
+0033
+Create another file called zfile
+$ touch zfile
+$ ls -l zfile
+-rw-r--r--. 1 cs45aa06 cs45aa06 0 Sep 24 05:23 zfile
+What are the permissions of zfile?
+-rw-r--r--
+Owner: Read, write
+Group: Read
+Others: Read
+Why does zfile have those permissions?
+Because the umask value is set to 033, setting the file permission to 666 (full file permission value) - 33 = 644:
+6 = 110 = rw-
+4 = 100 = r--
+4 = 100 = r--
+Create a directory called 'zdir'
+$ mkdir zdir
+$ ls -ld zdir
+drwxr-xr-x. 2 cs45aa06 cs45aa06 6 Sep 24 05:26 zdir
+What are the permissions of zdir
+drwxr-xr-x
+Owner: Read, write, execute
+Group: Read, execute
+Others: Execute
+Why does zdir have those permissions
+Because the umask value is set to 033, setting the file permission to 777 (full directory permission value) - 33 = 744:
+7 = 111 = rwx
+4 = 100 = r--
+4 = 100 = r--
+What does the 'x' permission allow on a directory?
+Execute
+What does the 'w' permission allow on a directory?
+Write
+ What does the 'r' permission allow on a directory?
+Read
+What groups does mr-tester belong to?
+$ groups mr-tester
+mr-tester : mr-tester
+$ grep mr-tester /etc/group
+mr-tester:x:1047:
+$ id -a mr-tester
+uid=1045(mr-tester) gid=1047(mr-tester) groups=1047(mr-tester)
+How can I change my current group id during this login session? What is the difference using the '-' and without the '-' . You will change your current real groupID to the new group or if no new group name is listed, you get the default in /etc/passwd file.
+Im getting prompted for a password so I cant enter change groups
+Use the chgrp command to assign your file to another group that you belong to.
+$ touch gxfile
+$ ls -l gxfile
+-rw-r--r--. 1 cs45aa06 cs45aa06 0 Sep 24 05:46 gxfile
+cs45aa06
+chgrp  wheel gxfile
+No
+Try to give your group ownership to cs45.
+$ touch mr-tfile
+$ ls -l mr-tfile
+-rw-r--r--. 1 cs45aa06 cs45aa06 0 Sep 24 05:49 mr-tfile
+$ chgrp cs45 mr-tfile
+No
+Because Im not a part of the cs45 group
+Test to see if mr-tfile is a regular file. If the test is successful, you will get a return or exit status of zero '0'. The test command is used to test file types and compare values.
+$ test -f mr-tfile
+$ echo $?
+0
+$ mkdir mr-dir
+$ ls -ld mr-dir
+drwxr--r--. 2 cs45aa06 cs45aa06 6 Sep 24 05:50 mr-dir
+$ test -d mr-dir
+$ echo $0
+-bash
+Let's have some fun with the test command.
+$ test 4 -lt 5
+$ echo $?
+0
+$ test 4 -lt 5 && echo "I got this!"
+-bash: !": event not found
+$ test 2 -ne 3 && echo "Rock on"
+Rock on
+$ test -d mr-dir  && echo "mr-dir is a directory"
+mr-dir is a directory
+Create a directory called permtest
+$ mkdir permtest
+$ cd permtest
+$ touch feedback1 feedback2 feedback3
+$ ls -lh
+total 0
+-rw-r--r--. 1 cs45aa06 cs45aa06 0 Sep 24 05:57 feedback1
+-rw-r--r--. 1 cs45aa06 cs45aa06 0 Sep 24 05:57 feedback2
+-rw-r--r--. 1 cs45aa06 cs45aa06 0 Sep 24 05:57 feedback3
+vi feedback1 and add two lines and safe the file.
+$ vi feedback1
+o "I am : $0 "
+echo "Practice harder!:)"
+Give the file execute permissions
+$ chmod +x feedback1
+$ ls -lh
+total 4.0K
+-rwxr--r--. 1 cs45aa06 cs45aa06 42 Sep 24 05:59 feedback1
+-rw-r--r--. 1 cs45aa06 cs45aa06  0 Sep 24 05:57 feedback2
+-rw-r--r--. 1 cs45aa06 cs45aa06  0 Sep 24 05:57 feedback3
+Use the symbolic options(u,g,o,a) to give feedback2 read,write for owner, read for group and nothing for others.
+$ chmod u=rw,g=r,o= feedback2
+$ ls -lh
+total 4.0K
+-rwxr--r--. 1 cs45aa06 cs45aa06 42 Sep 24 05:59 feedback1
+-rw-r-----. 1 cs45aa06 cs45aa06  0 Sep 24 05:57 feedback2
+-rw-r--r--. 1 cs45aa06 cs45aa06  0 Sep 24 05:57 feedback3
+Use the symbolic options to subtract write from group and others on feedback2
+$ chmod g-w,o-w feedback2
+$ ls -lh
+total 4.0K
+-rwxr--r--. 1 cs45aa06 cs45aa06 42 Sep 24 05:59 feedback1
+-rw-r-----. 1 cs45aa06 cs45aa06  0 Sep 24 05:57 feedback2
+-rw-r--r--. 1 cs45aa06 cs45aa06  0 Sep 24 05:57 feedback3
+Use the Octal permissions to give read,write,execute to owner of feedback3, read and execute to group of feedback3 and read only for others.
+$ chmod 754 feedback3
+$ ls -lh
+-rwxr--r--. 1 cs45aa06 cs45aa06 42 Sep 24 05:59 feedback1
+-rw-r-----. 1 cs45aa06 cs45aa06  0 Sep 24 05:57 feedback2
+-rwxr-xr--. 1 cs45aa06 cs45aa06  0 Sep 24 05:57 feedback3
+Make a directory called 'dir-tester'
+$ mkdir dir-tester
+Make another directory in dir-tester called dir-test2
+$ cd dir-tester
+$ mkdir dir-test2
+Create 4 files in dir-test2 called 'tester-file{1..4}'
+$ touch dir-tester/dir-test2/tester-file1
+$ touch dir-tester/dir-test2/tester-file2
+$ touch dir-tester/dir-test2/tester-file3
+$ touch dir-tester/dir-test2/tester-file4
+$ ls dir-tester/dir-test2/*
+dir-tester/dir-test2/tester-file1  dir-tester/dir-test2/tester-file3
+dir-tester/dir-test2/tester-file2  dir-tester/dir-test2/tester-file4
+Recursively do a long listing of dir-tester and all contents below
+$ ls -lR dir-tester
+dir-tester:
+total 0
+drwxrwxr-x. 2 cs45aa06 cs45aa06 86 Sep 24 06:38 dir-test2
+
+dir-tester/dir-test2:
+total 0
+-rw-rw-r--. 1 cs45aa06 cs45aa06 0 Sep 24 06:37 tester-file1
+-rw-rw-r--. 1 cs45aa06 cs45aa06 0 Sep 24 06:37 tester-file2
+-rw-rw-r--. 1 cs45aa06 cs45aa06 0 Sep 24 06:38 tester-file3
+-rw-rw-r--. 1 cs45aa06 cs45aa06 0 Sep 24 06:38 tester-file4
+Recursively change the permissions of all the content of dir-tester --all files and directory below to 600
+$ chmod -R 600 dir-tester
+chmod: cannot access dir-tester/dir-test2: Permission denied
+Tried with a second folder and got the same result
+
